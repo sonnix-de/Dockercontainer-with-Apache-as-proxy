@@ -1,0 +1,72 @@
+version: "3"
+services:
+  app1:
+    build:
+      context: .
+      dockerfile: ./app1/Dockerfile
+    container_name: web_app1
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    ports:
+      - "8060:80"
+    volumes:
+      - ./app1/htdocs:/var/www
+      - ./app1/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./app1/config/apache2.conf:/etc/apache2/apache2.conf
+    networks:
+      - webdocker-network
+
+  app2:
+    build:
+      context: .
+      dockerfile: ./app2/Dockerfile
+    container_name: web_app2
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    ports:
+      - "8070:80"
+    volumes:
+      - ./app2/htdocs:/var/www
+      - ./app2/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./app2/config/apache2.conf:/etc/apache2/apache2.conf
+    networks:
+      - webdocker-network
+
+  proxy:
+    build:
+      context: .
+      dockerfile: ./proxy/Dockerfile
+    container_name: web_proxy
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    ports:
+      - "80:80"
+    volumes:
+      - ./proxy/htdocs:/var/www
+      - ./proxy/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./proxy/config/apache2.conf:/etc/apache2/apache2.conf
+    networks:
+      - webdocker-network
+
+# Docker Networks
+networks:
+  webdocker-network:
+    driver: bridge
