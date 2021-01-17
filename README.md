@@ -7,13 +7,15 @@ In diesem Szenario sollen 3 Applikationen über einen Proxy laufen und wahlweise
 
 Die 3. App wird dabei in einer eigenen docker-compose Datei abgebildet und über das externe Netzwerk mit dem Proxy verbunden, damit auch eine lose kopplung untersucht wird.
 
+Eine 4. Instanz kommt über zammad in die Datei.
+Diese wird ebenfalls über das externe Netzwerk mit dem Proxy verbunden.
 
 ## Vorbereitungen:
 
 Notwendige Einträge in die /etc/hosts:
 
 ````
-127.0.0.1 example.com app1.example.com app2.example.com app3.example.com
+127.0.0.1 example.com app1.example.com app2.example.com app3.example.com tickets.example.com
 ````
 
 

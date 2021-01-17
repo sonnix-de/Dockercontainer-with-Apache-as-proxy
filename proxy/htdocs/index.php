@@ -11,11 +11,13 @@
 <iframe src="http://app1.example.com"></iframe>
 <iframe src="http://app2.example.com"></iframe>
 <iframe src="http://app3.example.com"></iframe>
+<iframe src="http://tickets.example.com"></iframe>
 
 <h2>Konfiguration as Paths (z.B. example.com/app1/):</h2>
 <iframe src="http://example.com/app1/"></iframe>
 <iframe src="http://example.com/app2/"></iframe>
 <iframe src="http://example.com/app3/"></iframe>
+<iframe src="http://example.com/tickets/"></iframe>
 
 
 
@@ -27,7 +29,10 @@
     <li><a href="http://app1.example.com">app1.example.com</a></li>
     <li><a href="http://app2.example.com"> app2.example.com</a></li>
     <li><a href="http://app3.example.com"> app3.example.com</a></li>
+    <li><a href="http://tickets.example.com">http://tickets.example.com</a></li>
     <li><a href="http://example.com/app1/">example.com/app1/</a></li>
     <li><a href="http://example.com/app2/">example.com/app2/</a></li>
     <li><a href="http://example.com/app3/">example.com/app3/</a></li>
+
+
 </ul>
